@@ -1,0 +1,49 @@
+{
+  "tools": [
+    {
+      "name": "list_freshdesk_tickets",
+      "description": "Use this tool to list Freshdesk tickets in a read-only manner. It returns a paginated list of tickets for the connected Freshdesk account. Do not use it to create, update, or delete tickets.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "page": {
+            "type": "integer",
+            "minimum": 1,
+            "default": 1,
+            "description": "Page number to fetch from Freshdesk."
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "name": "get_freshdesk_ticket",
+      "description": "Use this tool to fetch the full details of one Freshdesk ticket by its ID. This tool is read-only and must not be used to modify ticket state.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "ticket_id": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "The Freshdesk ticket ID to retrieve."
+          }
+        },
+        "required": ["ticket_id"]
+      }
+    },
+    {
+      "name": "search_freshdesk_tickets",
+      "description": "Use this tool to search Freshdesk tickets by keyword. This is a read-only search for ticket content and metadata. Do not use it to modify tickets or authenticate users.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "Keyword or phrase to search across Freshdesk ticket data."
+          }
+        },
+        "required": ["query"]
+      }
+    }
+  ]
+}
